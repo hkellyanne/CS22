@@ -18,7 +18,7 @@ def isFloat(token):
     def isNumber(token):
         return isInt(token) or isFloat(token)
 
-def infixToPostfix(infixexpr):  # fix this code to do floats
+def infixToPostfix(infixexpr):  
     prec = {}
     prec["*"] = 3
     prec["/"] = 3
@@ -86,12 +86,6 @@ def eval_infix(s):
 
 postfixtoinfix("10  8 - 2  3 * 2 / +")
 
-## Keep all this code AS-IS, do not modify
-##   This code runs a unit test and will report errors
-##   when it detects your result is different than the expected result
-##
-## do not modify the following, if you get an error, it is in
-## your code
 
 import math
 
