@@ -1,51 +1,12 @@
 __author__ = 'Kelly'
 
-# ANSWER KEY - Implement double linked list Deque
-# by Gerry jenkins
-#  The idea is to implement the Deque ADT specified in
-#
+
 # if you set the debug variable below to True, it will dump your deque out in detail after each test before it tests
 # with asserts
 
 debug = False
 
-#
-# Listing 3.14, this means that you must implement all the ADT methods
-#
-#     isEmpty(),
-#     addFront(item),
-#     addRear(item),
-#     removeFront(item)
-#     removeRear(item), and
-#     size()
-#
-# I have asked you to implement this ADT with a double linked list implementation and add the pop(i) method.
-#
-# If you redo you assignment and use the following template, fill in your code in the ???
-# the extra code for __str__, dump and main will test your code.
-#
-# You can use dq.dump() to see the internal structure of the que at any point in the testing
-#
 
-# starter code  **** The code below is designed to give you a template to put your code to implement a
-# linked list version of deque, you will see lines designated where you replace your code where the line is.
-# NOTE, the python keyword pass, does nothing except serve as a placeholder for code, they are there so you can
-# work on getting one method at a time working and tested without having syntac errors.
-# when you run this file, it fails righ after it trys to addFront(11)
-# because both addFront(d) and size() have not been written,
-# so these are the first two methods you should write the code for
-
-# picture of nodes in a linked list
-#
-#                      --------   --------   --------
-# self.front  -------> | data |   | data |   | data | <---------- self.rear
-#                      | next |-->| next |-->| next |--> None
-#             None <-- | prev |<--| prev |<--| prev |
-#                      --------   --------    --------
-#                        node0     node1       node2
-#
-# ----------------------------------------------------------------------------------
-# Start of code here:
 
 
 class Node:
@@ -55,7 +16,7 @@ class Node:
         self.next = None
         self.prev = None
 
-# these are the defs you need for deque (page 121, Listing 3.14)
+# these are the defs you need for deque 
 
 class Deque:
 
@@ -133,8 +94,8 @@ class Deque:
         # remove noded indexed: index indicated by index 0,1,2 count from front to rear
         # index -1,-2,-3 counts from rear toward front
         # return None if list is empty before pop
-        # NOTE: make sure to return the data that was popped, not the node
-        pass # replace this pass line with your code
+
+        pass
 
 
     def size(self):
@@ -147,13 +108,6 @@ class Deque:
                 current = current.next
         return count
 
-
-
-# DO NOT MODIFY ANY OF THE CODE AFTER THIS POINT
-    # code after this point, is for the testing, it includes __str__ and dump()
-    #-----------------------------------------------------------------------------------
-
-    # these first items are added to the definition of Deque class
 
     def __str__(self): # print deque
         node = self.front
@@ -174,8 +128,7 @@ class Deque:
         if self.rear == None: return None
         return self.rear.data
 
-    def dump(self): # new version to name the nodes found n1, n2, etc.
-    # instead of dumping raw id numbers
+    def dump(self): 
 
         def addr(x):
             if x is None:
@@ -220,20 +173,6 @@ class Deque:
                 "for node number " + str(len(forward))
                 node = node.prev
 
-# END of Deque Class definition
-#----------------------------------------------------
-
-# main() will test your deque class by creating an object of type Deque
-# and then do a series of call to your deque object.
-#
-# for each call involving your class it does the follown
-# 1. print out what call it just did and what is on the que when done
-# 2. if debug variable is True it will dump the entire structure of the dq object
-# 3. does a series of assert statements to test if the call just completed worked
-# 4. calls a method called integrity_check which will try to follow all the links in your dq object to see
-#    if they are good.
-#
-
 
 def main():
 
@@ -245,7 +184,7 @@ def main():
 
     dq.addFront(11)
     print("dq.addFront(11), dq after: ", dq) # 0
-    if debug: dq.dump() # dump out structure so you can see
+    if debug: dq.dump() 
     assert dq.size() == 1, "size should now be 1"
     assert dq.peekFront() == 11, "front node data should be 11"
     assert dq.isEmpty() == False , "isEmpty should return False"
@@ -253,7 +192,7 @@ def main():
 
     dq.addFront(22)
     print("dq.addFront(22), dq after: ", dq) # 0
-    if debug: dq.dump() # dump out structure so you can see
+    if debug: dq.dump() 
     assert dq.size() == 2, "size should now be 2"
     assert dq.peekFront() == 22, "front node data should be 22"
     assert dq.peekRear() == 11, "rear node data should be 11"
@@ -261,14 +200,14 @@ def main():
 
     dq.addFront(55)
     print("dq.addFront(55), dq after: ", dq) # 0
-    if debug: dq.dump() # dump out structure so you can see
+    if debug: dq.dump() 
     assert dq.size() == 3, "size should now be 3"
     assert dq.peekFront() == 55, "font node data should be 22"
     dq.integrity_check()
 
     data = dq.removeFront()
     print("dq.removeFront(), dq after: ", dq)
-    if debug: dq.dump() # dump out structure so you can see
+    if debug: dq.dump()
     assert data == 55, "removeFront() should return 55"
     assert dq.peekFront() == 22, "front node data should now be 22"
     assert dq.size() == 2, "size should now be 2"
@@ -276,26 +215,26 @@ def main():
 
     dq.addRear(9)
     print("dq.addRear(9), dq after: ", dq)
-    if debug: dq.dump() # dump out structure so you can see
+    if debug: dq.dump()
     assert dq.size() == 3, "size should now be 3"
     assert dq.peekRear() == 9, "front node data should now be 9"
     dq.integrity_check()
 
     dq.addRear(1)
     print("dq.addRear(1), dq after: ", dq)
-    if debug: dq.dump() # dump out structure so you can see
+    if debug: dq.dump() 
     assert dq.size() == 4, "size should now be 4"
     dq.integrity_check()
 
     dq.addRear(99)
     print("dq.addRear(1), dq after: ", dq)
-    if debug: dq.dump() # dump out structure so you can see
+    if debug: dq.dump() 
     assert dq.size() == 5, "size should now be 5"
     dq.integrity_check()
 
     data = dq.removeRear()
     print("dq.removeRear(), dq after: ", dq)
-    if debug: dq.dump() # dump out structure so you can see
+    if debug: dq.dump() 
     assert data == 99, "removeRear() should return 1"
     assert dq.peekRear() == 1, "Rear node data should now be 22"
     assert dq.size() == 4, "size should now be 4"
@@ -305,9 +244,9 @@ def main():
 
     n = dq.pop(1)
     print("dq.pop(1), dq after: ", dq)
-    if debug: dq.dump() # dump out structure so you can see
+    if debug: dq.dump()
     print("  returned: ",n)
-    if debug: dq.dump() # dump out structure so you can see
+    if debug: dq.dump() 
     assert n == 11, "pop(1) should have returned 9 "
     assert dq.size() == 3, "size should now be 3"
     dq.integrity_check()
@@ -315,7 +254,7 @@ def main():
     n = dq.pop(-1)
     print("dq.pop(-1), dq after: ", dq)
     print("  returned: ",n)
-    if debug: dq.dump() # dump out structure so you can see
+    if debug: dq.dump()
     assert n == 1, "pop(-1) should have returned 1 "
     assert dq.size() == 2, "size should now be 2"
     dq.integrity_check()
@@ -323,7 +262,7 @@ def main():
     n = dq.pop(0)
     print("dq.pop(0), dq after: ", dq)
     print("  returned: ",n)
-    if debug: dq.dump() # dump out structure so you can see
+    if debug: dq.dump()
     assert n == 22, "pop(0) should have returned 22 "
     assert dq.size() == 1, "size should now be 1"
     dq.integrity_check()
@@ -331,13 +270,11 @@ def main():
     n = dq.pop(-1)
     print("dq.pop(-1), dq after: ", dq)
     print("  returned: ",n)
-    if debug: dq.dump() # dump out structure so you can see
+    if debug: dq.dump() 
     assert n == 9, "pop(-1) should have returned 9 "
     assert dq.size() == 0, "size should now be 0"
     assert dq.isEmpty() == True , "isEmpty should return True"
     dq.integrity_check()
-#----------------------------------------------
 
-# now test it
 main()
 
